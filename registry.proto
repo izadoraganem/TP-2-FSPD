@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "portmapper.proto";
+
+package registry;
+
+service ServiceRegistry {
+    rpc map (entrada_registry) returns (portmapper.status_resposta);
+    rpc unmap (portmapper.nome_servidor) returns (portmapper.status_resposta);
+    rpc query (portmapper.nome_servidor) returns (locator_resposta);
+    rpc finalize (portmapper.empty) returns (portmapper.terminate_resposta);
+}
+
+message entrada_registry {
+    string name = 1;
+    string locator = 2;
+}
+
+message locator_resposta {
+    string locator = 1;
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+package portmapper;
+
+service PortMapper{
+    rpc register_service (informacao_servidor) returns (port_resposta);
+    rpc unregister_service (requisicao_porta) returns (status_resposta);
+    rpc get_service_info (nome_servidor) returns (info_resposta);
+    rpc terminate (empty) returns (terminate_resposta);
+}
+
+message informacao_servidor{
+    string name = 1;
+    float value = 2;
+}
+
+message port_resposta{
+    int32 port = 1;
+}
+
+message requisicao_porta{
+    int32 port = 1;
+}
+
+message status_resposta{
+    int32 status = 1;
+}
+
+message nome_servidor{
+    string name = 1;
+}
+
+message info_resposta{
+    int32 port = 1;
+    float value = 2;
+}
+
+message terminate_resposta{
+    int32 count = 1;
+}
+
+message empty {}
