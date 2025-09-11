@@ -25,6 +25,7 @@ run_registry:
 	python svc_reg.py $(arg)
 
 run_cli_registry:
+
 	python cln_reg.py $(arg)
 
 clean:
